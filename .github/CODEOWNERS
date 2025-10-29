@@ -1,0 +1,7 @@
+# Todos los archivos requieren aprobación de ambos
+* @usuario1 @usuario2
+
+# O por áreas específicas (opcional):
+*.html @usuario1
+*.css @usuario1
+*.js @usuario2
