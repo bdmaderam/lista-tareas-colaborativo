@@ -1,107 +1,90 @@
-Descripción del Proyecto
+# Lista de Tareas Colaborativa
+
+## Descripción del Proyecto
+
 Una aplicación web de lista de tareas desarrollada colaborativamente entre dos personas, implementando metodologías ágiles con GitHub Projects y desplegada en AWS EC2.
 
-Características principales:
+**Características principales:**
+- ✅ Agregar nuevas tareas
+- ✅ Marcar tareas como completadas
+- ✅ Eliminar tareas
+- ✅ Filtrar tareas (Todas, Pendientes, Completadas)
+- ✅ Persistencia de datos en Local Storage
+- ✅ Diseño responsive
+- ✅ Interfaz moderna y intuitiva
 
-Agregar nuevas tareas
+## Tecnologías Utilizadas
 
-Marcar tareas como completadas
+**Frontend:** HTML5, CSS3, JavaScript (ES6+)
 
-Eliminar tareas
+**Control de Versiones:** Git & GitHub
 
-Filtrar tareas (Todas, Pendientes, Completadas)
+**Gestión de Proyecto:** GitHub Projects
 
-Persistencia de datos en Local Storage
+**Hosting:** AWS EC2 con Nginx
 
-Diseño responsive
+**Sistema Operativo:** Amazon Linux 2023
 
-Interfaz moderna y intuitiva
+## Metodología de Trabajo Colaborativo
 
-Tecnologías Utilizadas
-Frontend: HTML5, CSS3, JavaScript (ES6+)
+### GitHub Projects Implementation
 
-Control de Versiones: Git & GitHub
+**Configuración del Project Board:**
+📋 Backlog → ⏳ To Do → 🔄 In Progress → 👀 Review → ✅ Done
 
-Gestión de Proyecto: GitHub Projects
+**Flujo de trabajo implementado:**
+- Creación de Issues con templates específicos
+- Asignación de tareas por áreas (Frontend/Backend)
+- Branch protection rules con revisión obligatoria
+- Pull Requests con revisión de código
+- Merge después de aprobación
 
-Hosting: AWS EC2 con Nginx
+**Issues trabajados:**
+- #1 - Estructura HTML básica (Frontend)
+- #2 - Lógica JavaScript principal (Backend)
+- #3 - Estilos CSS y responsive design (Frontend)
+- #4 - Sistema de filtros y contadores (Backend)
+- #5 - Persistencia con Local Storage (Backend)
 
-Sistema Operativo: Amazon Linux 2023
+**División de responsabilidades:**
+- Compañero A (Frontend): HTML, CSS, diseño responsive
+- Compañero B (Backend): JavaScript, funcionalidades, lógica de negocio
 
-Metodología de Trabajo Colaborativo
-GitHub Projects Implementation
-Configuración del Project Board:
-text
-Backlog -> To Do -> In Progress -> Review -> Done
-Flujo de trabajo implementado:
-Creación de Issues con templates específicos
+## Proceso de Desarrollo
 
-Asignación de tareas por áreas (Frontend/Backend)
+### Fase 1: Planificación & Setup
+✅ Definición de requisitos
+✅ Creación del repositorio GitHub
+✅ Configuración de GitHub Projects
+✅ Establecimiento de branch protection rules
+✅ Configuración de CODEOWNERS
 
-Branch protection rules con revisión obligatoria
 
-Pull Requests con revisión de código
+### Fase 2: Desarrollo Iterativo
+✅ Implementación por features en ramas separadas
+✅ Revisión de código mediante Pull Requests
+✅ Testing continuo y corrección de bugs
+✅ Comunicación constante entre el equipo
 
-Merge después de aprobación
 
-Issues trabajados:
-#1 - Estructura HTML básica (Frontend)
+### Fase 3: Deployment & CI/CD
+✅ Configuración del servidor EC2
+✅ Instalación y configuración de Nginx
+✅ Deployment automatizado mediante scripts
+✅ Verificación y testing en producción
 
-#2 - Lógica JavaScript principal (Backend)
 
-#3 - Estilos CSS y responsive design (Frontend)
+## Deployment en AWS EC2
 
-#4 - Sistema de filtros y contadores (Backend)
+### Configuración del Servidor:
+- **Instancia:** t2.micro (Free Tier)
+- **SO:** Amazon Linux 2023
+- **Servidor Web:** Nginx
+- **Puertos:** HTTP (80) abierto al público
 
-#5 - Persistencia con Local Storage (Backend)
+### Proceso de Deployment:
 
-División de responsabilidades:
-Compañero A (Frontend): HTML, CSS, diseño responsive
-
-Compañero B (Backend): JavaScript, funcionalidades, lógica de negocio
-
-Proceso de Desarrollo
-Fase 1: Planificación & Setup
-Definición de requisitos
-
-Creación del repositorio GitHub
-
-Configuración de GitHub Projects
-
-Establecimiento de branch protection rules
-
-Configuración de CODEOWNERS
-
-Fase 2: Desarrollo Iterativo
-Implementación por features en ramas separadas
-
-Revisión de código mediante Pull Requests
-
-Testing continuo y corrección de bugs
-
-Comunicación constante entre el equipo
-
-Fase 3: Deployment & CI/CD
-Configuración del servidor EC2
-
-Instalación y configuración de Nginx
-
-Deployment automatizado mediante scripts
-
-Verificación y testing en producción
-
-Deployment en AWS EC2
-Configuración del Servidor:
-Instancia: t2.micro (Free Tier)
-
-SO: Amazon Linux 2023
-
-Servidor Web: Nginx
-
-Puertos: HTTP (80) abierto al público
-
-Proceso de Deployment:
-bash
+```bash
 # 1. Configuración inicial del servidor
 sudo dnf update -y
 sudo dnf install nginx git -y
@@ -118,6 +101,7 @@ sudo chmod -R 755 /usr/share/nginx/html/
 
 # 4. Reinicio del servicio
 sudo systemctl restart nginx
+```
 Problemas y Soluciones Encontradas
 1. Configuración de GitHub Projects
 Problema: No se podían asignar reviewers inicialmente
@@ -130,16 +114,19 @@ Solución: Asegurarse de hacer commits antes de crear el PR
 3. Deployment en EC2 - Directorio incorrecto
 Problema: Se mostraba página por defecto de Nginx
 Solución: Los archivos estaban en subcarpeta, se movieron a la raíz:
-
+```
 bash
 sudo mv lista-tareas-colaborativo/* .
 sudo mv lista-tareas-colaborativo/.* . 2>/dev/null || true
+```
 4. Permisos de archivos
 Problema: Nginx no podía servir los archivos
 Solución: Configurar permisos correctos:
 
+```
 bash
 sudo chown -R nginx:nginx /usr/share/nginx/html/
+```
 Lecciones Aprendidas
 Trabajo Colaborativo:
 La comunicación constante es esencial
@@ -164,19 +151,19 @@ El monitoreo continuo es crucial
 
 Características de la Aplicación
 Funcionalidades Implementadas:
-Agregar tareas con validación de input vacío
+✨ Agregar tareas con validación de input vacío
 
-Marcar como completadas con efecto visual
+✅ Marcar como completadas con efecto visual
 
-Eliminar tareas individualmente
+🗑️ Eliminar tareas individualmente
 
-Filtros dinámicos (Todas/Pendientes/Completadas)
+🔍 Filtros dinámicos (Todas/Pendientes/Completadas)
 
-Contador en tiempo real de tareas pendientes
+📊 Contador en tiempo real de tareas pendientes
 
-Persistencia automática en Local Storage
+💾 Persistencia automática en Local Storage
 
-Diseño responsive para móviles y desktop
+📱 Diseño responsive para móviles y desktop
 
 Interfaz de Usuario:
 Diseño moderno con gradientes y sombras
@@ -192,46 +179,31 @@ Paleta de colores consistente
 Scripts de Mantenimiento
 Actualización automática:
 bash
-#!/bin/bash
+```#!/bin/bash
 cd /usr/share/nginx/html
 sudo git pull origin main
 sudo systemctl restart nginx
-echo "Aplicación actualizada"
+echo "✅ Aplicación actualizada"
+```
 Backup de datos:
-bash
+```bash
 #!/bin/bash
 cp /usr/share/nginx/html/data.json /home/ec2-user/backup/
-echo "Backup completado"
+echo "✅ Backup completado"
+```
 Acceso a la Aplicación
 URL de producción: http://[IP_PUBLICA_EC2]
 
 Métricas de Éxito
-100% de issues completados
+✅ 100% de issues completados
 
-0 conflictos de merge
+✅ 0 conflictos de merge
 
-Todas las revisiones de código aprobadas
+✅ Todas las revisiones de código aprobadas
 
-Despliegue exitoso en producción
+✅ Despliegue exitoso en producción
 
-Tiempo de desarrollo: 1 semana
+✅ Tiempo de desarrollo: 1 semana
 
-Contribuidores
-[Nombre Compañero A] - Frontend & Design
 
-[Nombre Compañero B] - Backend & Deployment
 
-Próximas Mejoras
-Implementar edición in-place de tareas
-
-Añadir categorías y etiquetas
-
-Implementar modo oscuro
-
-Añadir sincronización con cloud
-
-Implementar PWA capabilities
-
-Fecha de finalización: Octubre 2023
-Estado del proyecto: Completado y en producción
-Calificación del equipo: Excelente colaboración y aprendizaje
